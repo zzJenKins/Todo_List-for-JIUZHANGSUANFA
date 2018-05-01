@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>todo_list</title>
+
+
+<link rel="stylesheet" type="text/css" href="\static\bootstrap-3.3.7-dist\css\bootstrap.min.css">
+
+    <style type="text/css">
+        body{
+          		background:url() #f8f6e9;
+				       background-repeat: repeat;
+            width: 600px;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Add Todo List</h1>
+    <form action="/msggate/" method="post"  class="form-group">
+        {% csrf_token %}
+        <label>Status：</label>
+        <input type="text" name="userA" class="form-control" placeholder="Status"/><br>
+        <label>Admin：</label>
+        <input type="text" name="userB" class="form-control" placeholder="Admin"/><br>
+        <label>List Content ：</label>
+        <input type="text" name="msg" class="form-control" placeholder="List Content"/><br>
+        <input type="submit" value="Add New" class="btn btn-primary"/><br>
+    </form>
+
+    <h1>Show Todo List</h1>
+    <form action="/msggate/" method="get" class="form-group">
+        <label>Admin：</label><input type="text" name="userC" class="form-control" placeholder="Admin"/> <br>
+        <input type="submit" value="Show Todo List" class="btn btn-primary"/>
+    </form>
+    
+    <form action="/msggate/" method="delete" class="form-group">
+        <input type="submit" value="Delete Todo List" class="btn btn-primary"/>
+    </form>
+
+    <table class="table table-bordered" >
+        <thead>
+            <th>Time added</th>
+            <th>Status</th>
+            <th>Todo List Content</th>
+        </thead>
+        <br>
+        <tbody>
+            {% for line in data %}
+            <tr>
+                <td>{{ line.time }}</td>
+                <td align="center">{{ line.userA }}</td>
+                <td>{{ line.msg }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
+  
+  
+
+</body>
+
+</html>
